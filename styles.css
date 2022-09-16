@@ -17,7 +17,8 @@ body {
 }
 
 nav{
-  margin-top: 2%;
+  margin-top: 3%;
+  margin-bottom: 3%;
   margin-right: 5%;
   text-align: right;
 }
@@ -32,8 +33,21 @@ nav a{
 }
 
 nav a:hover{
-  background-color: rgb(6, 91, 228);
+  background-color: rgb(5, 162, 235);
   color: white;
+}
+.ques{
+  margin-top: 2%;
+  margin-bottom: 2%;
+  padding: 1% 2%;
+  color: white;
+  font-size: 25px;
+  border-radius: 15px;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(92.49deg,
+    rgba(255, 255, 255, 0.1) 0.18%,
+    rgba(255, 255, 255, 0.05) 99.85%);
+  backdrop-filter: blur(5px);
 }
 
 #question {
@@ -212,6 +226,11 @@ button {
   .box-container {
     padding: 0 20px;
     width: 100%;
+  }
+  nav {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-right: 5%;
   }
   .card {
     flex-direction: column-reverse;
