@@ -16,6 +16,26 @@ body {
   margin: 0 auto;
 }
 
+nav{
+  margin-top: 2%;
+  margin-right: 5%;
+  text-align: right;
+}
+
+nav a{
+  padding:8px;
+  background-color: whitesmoke;
+  color: black;
+  font-size: 1.25em;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+nav a:hover{
+  background-color: rgb(6, 91, 228);
+  color: white;
+}
+
 #question {
   height: 100px;
   display: flex;
