@@ -25,6 +25,7 @@ function addHistory(questionText, timeGive, errorCount) {
 function displayHistory() {
   histories.innerHTML = "";
   const previousTests = JSON.parse(localStorage.getItem("testHistory")) || [];
+  // console.log(previousTests.length)
 
   previousTests.forEach((test) => {
     const newRow = document.createElement("div");

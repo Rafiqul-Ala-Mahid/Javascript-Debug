@@ -140,7 +140,6 @@ displayHistory();
 setInterval(() => {
   const currentTime = new Date().getTime();
   const timeSpent = (currentTime - startTime) / 1000;
-  console.log(startTime)
   let t = startTime;
   let v = t;
   if (c) {
