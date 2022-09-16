@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-body {
+body { 
   background-image: url("./bg.png");
   background-size: cover;
   background-position: left top;
@@ -68,6 +68,8 @@ body {
   transform: translate(-50%, -50%);
   height: 250px;
   width: 400px;
+  margin-left: 40%;
+  margin-top: 15%;
   background-color: #171717;
   border-radius: 15px;
   border: 2px solid #9dffad;
@@ -142,9 +144,12 @@ button {
 }
 
 #histories {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(3, 33%);
+  grid-gap: 1%;
+  grid-column-start: 1;
+  /* flex-wrap: wrap; */
+  /* justify-content: space-around; */
 }
 
 .card {
@@ -152,6 +157,7 @@ button {
   height: 100%;
   padding: 50px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: 20px 30px;
@@ -177,8 +183,9 @@ button {
   backdrop-filter: blur(5px);
   height: 100vh;
   width: 100%;
-  position: fixed;
-  top: 0;
+  /* position: fixed; */
+  top: 50%;
+  left: 50%;
 }
 
 @media only screen and (max-width: 700px) {
@@ -187,6 +194,30 @@ button {
     width: 100%;
   }
   .card {
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
+  #histories {
+    display: grid;
+    grid-template-columns: repeat(1, 100%);
+    grid-gap: 1%;
+    grid-column-end: 1 ;
+    /* flex-wrap: wrap; */
+    /* justify-content: space-around; */
+  }
+    #result {
+      position: fixed;
+      top: 10%;
+      left: 10%;
+      transform: translate(-50%, -50%);
+      height: 250px;
+      width: 400px;
+      margin-left: 40%;
+      margin-top: 50%;
+      background-color: #171717;
+      border-radius: 15px;
+      border: 2px solid #9dffad;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
 }

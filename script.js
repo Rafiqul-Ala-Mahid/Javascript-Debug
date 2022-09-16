@@ -4,6 +4,7 @@ const startBtn = document.getElementById("starts");
 const countdownOverlay = document.getElementById("countdown");
 const resultModal = document.getElementById("result");
 const modalBackground = document.getElementById("modal-background");
+const h = document.getElementById("histories");
 
 // variables
 let userText = "";
@@ -46,6 +47,7 @@ const typeController = (e) => {
   if (newLetterCorrect) {
     display.innerHTML += `<span class="green">${newLetter === " " ? "▪" : newLetter}</span>`;
   } else {
+    errorCount++;
     display.innerHTML += `<span class="red">${newLetter === " " ? "▪" : newLetter}</span>`;
   }
 
@@ -61,15 +63,16 @@ const validate = (key) => {
   }
   return false;
 };
-
+let c=0
 // FINISHED TYPING
 const gameOver = () => {
+  c = 1;
   document.removeEventListener("keydown", typeController);
   // the current time is the finish time
   // so total time taken is current time - start time
   const finishTime = new Date().getTime();
   const timeTaken = (finishTime - startTime) / 1000;
-
+  const timeGive=parseInt(timeTaken)
   // show result modal
   resultModal.innerHTML = "";
   resultModal.classList.toggle("hidden");
@@ -81,12 +84,14 @@ const gameOver = () => {
   // show result
   resultModal.innerHTML += `
     <h1>Finished!</h1>
-    <p>You took: <span class="bold">${timeTaken}</span> seconds</p>
+    <p>You took: <span class="bold">${timeGive}</span> seconds</p>
     <p>You made <span class="bold red">${errorCount}</span> mistakes</p>
     <button onclick="closeModal()">Close</button>
   `;
+  
+  h.style.display = "grid"
 
-  addHistory(questionText, timeTaken, errorCount);
+  addHistory(questionText, timeGive, errorCount);
 
   // restart everything
   startTime = null;
@@ -102,8 +107,9 @@ const closeModal = () => {
 
 const start = () => {
   // If already started, do not start again
-  if (startTime) return;
-
+  // if (startTime) return;
+  c=0
+  h.style.display="none"
   let count = 3;
   countdownOverlay.style.display = "flex";
 
@@ -113,7 +119,7 @@ const start = () => {
     // finished timer
     if (count == 0) {
       // -------------- START TYPING -----------------
-      countdownOverlay.addEventListener("keydown", typeController);
+      document.addEventListener("keydown", typeController);
       countdownOverlay.style.display = "none";
       display.classList.remove("inactive");
 
@@ -134,7 +140,11 @@ displayHistory();
 setInterval(() => {
   const currentTime = new Date().getTime();
   const timeSpent = (currentTime - startTime) / 1000;
-
-
-  document.getElementById("show-time").innerHTML = `${startTime ? timeSpent : 0} seconds`;
+  console.log(startTime)
+  let t = startTime;
+  let v = t;
+  if (c) {
+    v = false;
+  }
+  document.getElementById("show-time").innerHTML = `${v ? parseInt(timeSpent) : 0} seconds`;
 }, 1000);
